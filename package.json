@@ -1,0 +1,14 @@
+{
+  "name": "webhook-contract-repair",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "A reproducible JSON mapping failure, repair, and HTTP contract test suite.",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test test/repair.test.mjs test/transport.test.mjs",
+    "demo": "node examples/demo.mjs",
+    "check": "node --check src/map-order.mjs && node --check src/deliver.mjs && node --check fixtures/destination.mjs"
+  }
+}
