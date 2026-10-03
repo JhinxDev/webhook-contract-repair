@@ -1,5 +1,13 @@
 # Verification record
 
+## Version 0.2.0 replay lab
+
+Checked October 3, 2026 on Windows with Node 24.15.0: syntax checks passed; 29 tests passed (17 existing plus 12 replay tests); original HTTP demo passed; all four expected/actual process-exit lab scenarios matched. Tests require loopback permission. No test was bypassed. For hosted verification, use the workflow run matching the release commit, linked in its release notes; the original run below verifies only v0.1.0.
+
+The lab starts no public receiver and performs no external API calls. See [reproduction and limits](replay-lab.md). Package version is 0.2.0. The existing v0.1.0 tag and assets remain available unchanged. Release assets include the exact source archive, SHA256 file and a manifest identifying source and verification.
+
+## Original v0.1.0 verification
+
 Checked October 3, 2026 on Windows, Node 24.15.0.
 
 | Check | Result |

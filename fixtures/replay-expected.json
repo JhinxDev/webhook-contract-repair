@@ -1,0 +1,6 @@
+{
+  "before-receipt-commit": { "beforeRecovery": { "events": 0, "deliveries": 0, "fulfillments": 0, "state": null }, "afterRecovery": { "events": 1, "deliveries": 2, "fulfillments": 1, "state": "completed" } },
+  "after-receipt-commit": { "beforeRecovery": { "events": 1, "deliveries": 1, "fulfillments": 0, "state": "pending" }, "afterRecovery": { "events": 1, "deliveries": 3, "fulfillments": 1, "state": "completed" } },
+  "after-effect-write": { "beforeRecovery": { "events": 1, "deliveries": 1, "fulfillments": 0, "state": "pending" }, "afterRecovery": { "events": 1, "deliveries": 3, "fulfillments": 1, "state": "completed" } },
+  "after-effect-commit": { "beforeRecovery": { "events": 1, "deliveries": 1, "fulfillments": 1, "state": "completed" }, "afterRecovery": { "events": 1, "deliveries": 3, "fulfillments": 1, "state": "completed" } }
+}

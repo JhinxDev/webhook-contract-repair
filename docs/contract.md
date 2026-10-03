@@ -34,7 +34,7 @@ Additional source fields are ignored. No additional destination fields are permi
 
 `POST /orders`, `Content-Type: application/json`, on the temporary local fixture. An accepted record returns 201. Contract mismatch returns 422; malformed JSON returns 400; body larger than 4096 bytes returns 413. The fixture stores accepted records only in memory until shutdown.
 
-The sender requires 201, rejects redirects and uses a bounded timeout. A failed POST is not retried because this exercise does not implement replay-safe delivery.
+The sender requires 201, rejects redirects and uses a bounded timeout. A failed POST is not retried because the HTTP destination does not implement replay-safe delivery. The separate [SQLite replay lab](replay-lab.md) demonstrates duplicate suppression and recovery for a local database effect only; it does not retry these HTTP requests.
 
 ## Errors
 

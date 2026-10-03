@@ -8,4 +8,6 @@ Production adaptation would require authenticated access, source signature verif
 
 There are no third-party runtime dependencies. This does not imply the Node runtime or all code is free of vulnerabilities. Keep Node supported and review deployment changes separately.
 
+The replay lab stores minimized synthetic order data in local SQLite. A single-tenant order-create policy suppresses duplicate local fulfillment rows, with event completion in the same transaction. This is not authenticated replay defence or exactly-once remote delivery. Do not put network effects in the fault-injection checkpoint callbacks. Read [the replay contract and remaining failure windows](docs/replay-lab.md).
+
 For any future issue report, use sanitized reproduction steps. Do not post real credentials, customer records or account details. A private vulnerability-reporting channel has not been configured for this demonstration.

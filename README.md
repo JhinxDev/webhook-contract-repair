@@ -2,7 +2,7 @@
 
 [![Verify example](https://github.com/JhinxDev/webhook-contract-repair/actions/workflows/ci.yml/badge.svg)](https://github.com/JhinxDev/webhook-contract-repair/actions/workflows/ci.yml)
 
-**Reproduce a broken API payload, fix the mapping, and prove the result over HTTP.**
+**Repair a webhook payload, then test duplicate delivery and restart recovery.**
 
 A small JavaScript case study for integration repair work. A nested webhook is mapped incorrectly and rejected by its destination. The repaired version validates the input, converts types and sends only the permitted fields.
 
@@ -16,7 +16,7 @@ Personal synthetic project, built with AI assistance. The bug and API are constr
 
 ## Run it
 
-Requires Node.js 24 or newer and permission to use loopback HTTP. There are no third-party dependencies, accounts or API keys.
+Requires Node.js 24.15.0 or newer and permission to use loopback HTTP. There are no third-party dependencies, accounts or API keys.
 
 ```sh
 git clone https://github.com/JhinxDev/webhook-contract-repair.git
@@ -24,6 +24,7 @@ cd webhook-contract-repair
 npm ci --ignore-scripts
 npm test
 npm run demo
+npm run lab
 ```
 
 The demo starts a temporary API on `127.0.0.1`, sends both versions and shuts it down. It does not contact an external service. The important output is:
@@ -60,13 +61,15 @@ The [case study](docs/case-study.md) explains the diagnosis and design choices. 
 | [fixtures/destination.mjs](fixtures/destination.mjs) | Independent API contract and fault simulation |
 | [test/](test/) | Regression, boundary and real HTTP tests |
 
-**17 tests pass locally on Windows with Node 24.15.0.** They cover the reproduced failure, mapping, amount conversion, malformed input, minimized fields, HTTP rejection, timeout, redirect refusal and non-retry of failed POSTs. [Verification details](docs/verification.md).
+**29 tests pass locally on Windows with Node 24.15.0.** The original 17 cases cover mapping and HTTP boundaries. The 12 new cases exercise durable receipts, duplicates, concurrent processes, restart recovery, conflicts and bounded replay. [Verification details](docs/verification.md).
+
+The new [failure/replay lab](docs/replay-lab.md) prints expected and actual recovery state. It uses built-in SQLite and a synthetic local fulfillment row. Version 0.2.0 adds this lab while preserving the original mapping example. Read the [reliability case study](docs/replay-case-study.md).
 
 GitHub Actions runs the same checks on Windows and Ubuntu. The badge above links to the current run results.
 
 ## Boundaries
 
-This exercise begins with a parsed payload, not a public webhook receiver. It has no authentication, signature verification, persistence, idempotency or automatic retry. Its fixture is not production infrastructure. A single accepted test call is not an exactly-once guarantee. Read the [security boundaries](SECURITY.md) before adapting it.
+This exercise begins with a parsed payload, not a public webhook receiver. The replay lab adds persistence and duplicate suppression only for a synthetic local database effect. It has no authentication, signature verification or automatic network retry. Its fixture is not production infrastructure and does not guarantee exactly-once external effects. Read the [security boundaries](SECURITY.md) and [remaining failure windows](docs/replay-lab.md) before adapting it.
 
 The code demonstrates a repair method for this scenario, not a guarantee that an unfamiliar vendor system can be fixed. A client job still requires the actual error, API contract, authorized access and agreed acceptance tests.
 
