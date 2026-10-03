@@ -1,6 +1,6 @@
 # Webhook Contract Repair
 
-[![Verify example](https://github.com/HeyiTzSenpai/webhook-contract-repair/actions/workflows/ci.yml/badge.svg)](https://github.com/HeyiTzSenpai/webhook-contract-repair/actions/workflows/ci.yml)
+[![Verify example](https://github.com/JhinxDev/webhook-contract-repair/actions/workflows/ci.yml/badge.svg)](https://github.com/JhinxDev/webhook-contract-repair/actions/workflows/ci.yml)
 
 **Reproduce a broken API payload, fix the mapping, and prove the result over HTTP.**
 
@@ -19,7 +19,7 @@ Personal synthetic project, built with AI assistance. The bug and API are constr
 Requires Node.js 24 or newer and permission to use loopback HTTP. There are no third-party dependencies, accounts or API keys.
 
 ```sh
-git clone https://github.com/HeyiTzSenpai/webhook-contract-repair.git
+git clone https://github.com/JhinxDev/webhook-contract-repair.git
 cd webhook-contract-repair
 npm ci --ignore-scripts
 npm test
@@ -75,3 +75,5 @@ The code demonstrates a repair method for this scenario, not a guarantee that an
 Run `npm run check` for syntax checks and `npm test` before changes. See [CONTRIBUTING.md](CONTRIBUTING.md) for the small maintenance workflow and [PROVENANCE.md](PROVENANCE.md) for authorship/data transparency.
 
 This public portfolio example is not open-source licensed. See [LICENSE](LICENSE) for the explicit licence status. The npm private flag prevents accidental package publication and does not control GitHub visibility.
+
+Download the versioned source from [Releases](https://github.com/JhinxDev/webhook-contract-repair/releases). For a short presentation outline, see the [walkthrough](docs/walkthrough.md).
